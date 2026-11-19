@@ -119,7 +119,7 @@ export default function HeroSection() {
             <br />
             <span className="inline-flex items-baseline">
               <span className="text-[#221d18]">For&nbsp;</span>
-              <span className="inline-flex items-baseline text-[#590907]">
+              <span className="inline-flex items-baseline text-[#590907] pb-2 -mb-2">
                 <span className="animate-text-shimmer">
                   {currentText}
                 </span>
