@@ -59,9 +59,9 @@ export default function HeroSection() {
           >
             One platform.
             <br />
-            <span className="inline-flex items-baseline whitespace-nowrap">
+            <span className="inline-flex items-baseline">
               <span className="text-[#221d18]">For&nbsp;</span>
-              <span className="inline-grid grid-cols-1 [clip-path:inset(-10px_-6px_-24px_-6px)] pb-1 -mb-1">
+              <span className="inline-grid grid-cols-1 [clip-path:inset(-10px_-8px_-26px_-8px)] pb-1 -mb-1">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={PLATFORMS[platformIndex]}
@@ -75,8 +75,9 @@ export default function HeroSection() {
                   </motion.span>
                 </AnimatePresence>
               </span>
-              <span className="text-[#221d18]">&nbsp;Automation.</span>
             </span>
+            <br />
+            <span className="text-[#221d18]">Automation.</span>
           </h1>
 
           {/* Subtitle */}
