@@ -1,4 +1,4 @@
-# DESICO (DESIQO)
+#  (DESIQO)
 
 > **Autonomous Content Preparation & Governance Platform**  
 > *Kalpanaaa Software Solutions Pvt Ltd — "Code . Innovate . Elevate."*  
