@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import HeroPhonesShowcase from "./HeroPhonesShowcase";
 
 export default function HeroSection() {
   return (
@@ -57,21 +57,9 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right Column: Hero Mockup Image */}
+        {/* Right Column: Hero Mockup Showcase with 5 independently moving 3D cards */}
         <div className="lg:col-span-6 xl:col-span-7 relative flex items-center justify-center lg:justify-end">
-          <div className="relative w-full max-w-[620px] lg:max-w-[720px] xl:max-w-[780px]">
-            {/* Subtle soft backlight glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(89,9,7,0.12)_0%,_transparent_70%)] blur-2xl pointer-events-none -z-10 scale-95" />
-            
-            <Image
-              src="/images/hero-phones.png"
-              alt="DESIQO - AI-Powered Social Media Management Showcase"
-              width={1200}
-              height={800}
-              priority
-              className="w-full h-auto object-contain drop-shadow-[0_25px_45px_rgba(89,9,7,0.18)] hover:scale-[1.015] transition-transform duration-500 select-none pointer-events-none"
-            />
-          </div>
+          <HeroPhonesShowcase />
         </div>
       </div>
 
