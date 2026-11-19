@@ -59,9 +59,9 @@ export default function HeroSection() {
           >
             One platform.
             <br />
-            <span className="text-[#590907]">
-              For{" "}
-              <span className="inline-block relative overflow-hidden align-baseline">
+            <span className="text-[#590907] inline-flex items-baseline flex-wrap">
+              <span>For&nbsp;</span>
+              <span className="inline-grid grid-cols-1 [clip-path:inset(0_0_0_0)]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={PLATFORMS[platformIndex]}
@@ -69,13 +69,13 @@ export default function HeroSection() {
                     animate={{ y: "0%", opacity: 1 }}
                     exit={{ y: "-100%", opacity: 0 }}
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="inline-block"
+                    className="col-start-1 row-start-1"
                   >
                     {PLATFORMS[platformIndex]}
                   </motion.span>
                 </AnimatePresence>
-              </span>{" "}
-              automation.
+              </span>
+              <span>&nbsp;automation.</span>
             </span>
           </h1>
 
