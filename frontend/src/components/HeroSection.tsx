@@ -48,7 +48,7 @@ export default function HeroSection() {
     <motion.section
       ref={sectionRef}
       style={{ backgroundColor }}
-      className="relative min-h-screen w-full overflow-hidden bg-tech-grid pt-[180px] pb-24 flex flex-col justify-between"
+      className="relative min-h-screen w-full overflow-hidden bg-tech-grid pt-[160px] md:pt-[170px] pb-6 flex flex-col justify-between"
     >
       {/* Precision Ambient Radial Glows */}
       <motion.div
@@ -67,10 +67,10 @@ export default function HeroSection() {
       <div className="absolute top-28 right-8 text-[#590907]/25 font-mono text-sm pointer-events-none select-none hidden md:block">
         +
       </div>
-      <div className="absolute bottom-16 left-8 text-[#590907]/25 font-mono text-sm pointer-events-none select-none hidden md:block">
+      <div className="absolute bottom-8 left-8 text-[#590907]/25 font-mono text-sm pointer-events-none select-none hidden md:block">
         +
       </div>
-      <div className="absolute bottom-16 right-8 text-[#590907]/25 font-mono text-sm pointer-events-none select-none hidden md:block">
+      <div className="absolute bottom-8 right-8 text-[#590907]/25 font-mono text-sm pointer-events-none select-none hidden md:block">
         +
       </div>
 
@@ -110,12 +110,12 @@ export default function HeroSection() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-[#5A6054] max-w-xl font-normal leading-relaxed">
+          <p className="mt-5 text-base sm:text-lg md:text-xl text-[#5A6054] max-w-xl font-normal leading-relaxed">
             Create compelling content, plan your publishing, and engage with your audience across every channel while staying true to your brand.
           </p>
 
           {/* Action Buttons */}
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-6 flex flex-wrap items-center gap-4">
             <button className="px-7 py-3.5 rounded-full bg-[#221d18] text-white font-semibold text-sm hover:bg-[#590907] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
               Try free
             </button>
@@ -132,17 +132,17 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom Center Scroll Down Indicator */}
-      <div className="relative z-30 flex justify-center w-full pt-8 pb-4">
+      <div className="relative z-30 flex justify-center w-full pt-3 pb-1">
         <button
           onClick={handleScrollDown}
           aria-label="Scroll down to explore"
-          className="group flex flex-col items-center gap-1.5 cursor-pointer select-none transition-transform duration-300 hover:scale-105 active:scale-95"
+          className="group flex flex-col items-center gap-1 cursor-pointer select-none transition-transform duration-300 hover:scale-105 active:scale-95"
         >
-          <span className="text-[11px] font-mono tracking-[0.22em] uppercase text-[#590907]/60 group-hover:text-[#590907] transition-colors duration-200">
+          <span className="text-[9.5px] font-mono tracking-[0.2em] uppercase text-[#590907]/60 group-hover:text-[#590907] transition-colors duration-200">
             Scroll to explore
           </span>
-          <div className="w-8 h-8 rounded-full border border-[#590907]/25 bg-white/50 backdrop-blur-sm flex items-center justify-center shadow-xs group-hover:border-[#590907]/60 group-hover:bg-white/90 group-hover:shadow-md transition-all duration-300">
-            <ChevronDown className="w-4 h-4 text-[#590907] animate-bounce" />
+          <div className="w-7 h-7 rounded-full border border-[#590907]/25 bg-white/50 backdrop-blur-sm flex items-center justify-center shadow-xs group-hover:border-[#590907]/60 group-hover:bg-white/90 group-hover:shadow-md transition-all duration-300">
+            <ChevronDown className="w-3.5 h-3.5 text-[#590907] animate-bounce" />
           </div>
         </button>
       </div>
