@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 export default function Navbar() {
@@ -32,19 +33,34 @@ export default function Navbar() {
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
-        {/* Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-semibold uppercase tracking-wider shrink-0">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-[#5A6054] hover:text-[#590907] transition-colors duration-200 relative group py-1 whitespace-nowrap"
-            >
-              {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#590907] transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-        </nav>
+        {/* Left: Brand Logo & Name + Navigation Links */}
+        <div className="flex items-center gap-6 lg:gap-10">
+          {/* DesiQo Brand Logo & Name */}
+          <a href="#" className="flex items-center shrink-0 group py-1">
+            <Image
+              src="/images/desiqo-logo.png"
+              alt="DesiQo"
+              width={160}
+              height={44}
+              priority
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </a>
+
+          {/* Navigation Links */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-semibold uppercase tracking-wider shrink-0">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-[#5A6054] hover:text-[#590907] transition-colors duration-200 relative group py-1 whitespace-nowrap"
+              >
+                {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#590907] transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+          </nav>
+        </div>
 
         {/* Right: Single-Line One-Word CTA */}
         <div className="hidden sm:flex items-center gap-3 shrink-0">
