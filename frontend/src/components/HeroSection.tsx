@@ -1,9 +1,18 @@
 "use client";
 
 import React from "react";
+import { ChevronDown } from "lucide-react";
 import HeroPhonesShowcase from "./HeroPhonesShowcase";
 
 export default function HeroSection() {
+  const handleScrollDown = () => {
+    const target = document.getElementById("agents");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+    }
+  };
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-[#E8D2B5] bg-tech-grid pt-[180px] pb-24 flex flex-col justify-between">
       {/* Precision Ambient Radial Glows */}
@@ -63,7 +72,21 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div />
+      {/* Bottom Center Scroll Down Indicator */}
+      <div className="relative z-30 flex justify-center w-full pt-8 pb-4">
+        <button
+          onClick={handleScrollDown}
+          aria-label="Scroll down to explore"
+          className="group flex flex-col items-center gap-1.5 cursor-pointer select-none transition-transform duration-300 hover:scale-105 active:scale-95"
+        >
+          <span className="text-[11px] font-mono tracking-[0.22em] uppercase text-[#590907]/60 group-hover:text-[#590907] transition-colors duration-200">
+            Scroll to explore
+          </span>
+          <div className="w-8 h-8 rounded-full border border-[#590907]/25 bg-white/50 backdrop-blur-sm flex items-center justify-center shadow-xs group-hover:border-[#590907]/60 group-hover:bg-white/90 group-hover:shadow-md transition-all duration-300">
+            <ChevronDown className="w-4 h-4 text-[#590907] animate-bounce" />
+          </div>
+        </button>
+      </div>
     </section>
   );
 }
