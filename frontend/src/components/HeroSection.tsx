@@ -1,10 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import HeroPhonesShowcase from "./HeroPhonesShowcase";
 
+const PLATFORMS = ["social", "Instagram", "Facebook", "Twitter", "LinkedIn"];
+
 export default function HeroSection() {
+  const [platformIndex, setPlatformIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlatformIndex((prev) => (prev + 1) % PLATFORMS.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleScrollDown = () => {
     const target = document.getElementById("agents");
     if (target) {
@@ -47,7 +59,24 @@ export default function HeroSection() {
           >
             One platform.
             <br />
-            <span className="text-[#590907]">For social automation.</span>
+            <span className="text-[#590907]">
+              For{" "}
+              <span className="inline-block relative overflow-hidden align-baseline">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={PLATFORMS[platformIndex]}
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{ y: "0%", opacity: 1 }}
+                    exit={{ y: "-100%", opacity: 0 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className="inline-block"
+                  >
+                    {PLATFORMS[platformIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>{" "}
+              automation.
+            </span>
           </h1>
 
           {/* Subtitle */}
