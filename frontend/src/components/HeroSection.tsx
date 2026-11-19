@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import HeroPhonesShowcase from "./HeroPhonesShowcase";
 
-const PLATFORMS = ["social", "Instagram", "Facebook", "Twitter", "LinkedIn"];
+const PLATFORMS = ["Instagram", "Facebook", "Twitter", "LinkedIn"];
 
 export default function HeroSection() {
   const [platformIndex, setPlatformIndex] = useState(0);
@@ -59,9 +59,9 @@ export default function HeroSection() {
           >
             One platform.
             <br />
-            <span className="text-[#590907] inline-flex items-baseline flex-wrap">
-              <span>For&nbsp;</span>
-              <span className="inline-grid grid-cols-1 [clip-path:inset(0_0_0_0)]">
+            <span className="inline-flex items-baseline whitespace-nowrap">
+              <span className="text-[#221d18]">For&nbsp;</span>
+              <span className="inline-grid grid-cols-1 [clip-path:inset(-10px_-6px_-24px_-6px)] pb-1 -mb-1">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={PLATFORMS[platformIndex]}
@@ -69,19 +69,19 @@ export default function HeroSection() {
                     animate={{ y: "0%", opacity: 1 }}
                     exit={{ y: "-100%", opacity: 0 }}
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="col-start-1 row-start-1"
+                    className="col-start-1 row-start-1 text-[#590907]"
                   >
                     {PLATFORMS[platformIndex]}
                   </motion.span>
                 </AnimatePresence>
               </span>
-              <span>&nbsp;automation.</span>
+              <span className="text-[#221d18]">&nbsp;Automation.</span>
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="mt-6 text-base sm:text-lg md:text-xl text-[#5A6054] max-w-xl font-normal leading-relaxed">
-            Your posts written, designed, scheduled and answered across every network, always in your brand&apos;s voice.
+            Create compelling content, plan your publishing, and engage with your audience across every channel while staying true to your brand.
           </p>
 
           {/* Action Buttons */}
