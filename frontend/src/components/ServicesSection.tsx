@@ -207,7 +207,7 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        {/* Horizontal Scroll Carousel Track (280px x 360px Compact Size) */}
+        {/* Horizontal Scroll Carousel Track (Elongated Vertical Cards) */}
         <div className="w-full overflow-hidden">
           <div
             ref={scrollContainerRef}
@@ -223,7 +223,7 @@ export default function ServicesSection() {
               return (
                 <div
                   key={agent.id}
-                  className="w-[270px] sm:w-[280px] min-h-[360px] snap-start shrink-0 rounded-3xl glass-panel-milled border border-[#590907]/15 hover:border-[#590907]/35 hover:bg-white/70 text-[#220709] shadow-sm hover:shadow-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 group"
+                  className="w-[270px] sm:w-[285px] min-h-[490px] sm:min-h-[520px] snap-start shrink-0 rounded-3xl glass-panel-milled border border-[#590907]/15 hover:border-[#590907]/35 hover:bg-white/70 text-[#220709] shadow-sm hover:shadow-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 group"
                 >
                   <div>
                     {/* Card Header Row */}
