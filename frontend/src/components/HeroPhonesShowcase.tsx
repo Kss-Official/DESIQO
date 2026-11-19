@@ -221,26 +221,6 @@ export default function HeroPhonesShowcase() {
           title={card.name}
         />
       ))}
-
-      {/* Floating Pill Status on Hover (Bottom Center of Showcase) */}
-      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 pointer-events-none transition-all duration-300 z-50">
-        {hoveredCard !== null ? (
-          <div className="px-4 py-1.5 rounded-full bg-[#221d18]/90 text-white text-xs font-medium backdrop-blur-md shadow-lg border border-white/10 flex items-center gap-2 animate-in fade-in zoom-in-95 duration-200">
-            <span className="w-2 h-2 rounded-full bg-[#E8D2B5] animate-ping" />
-            <span className="text-[#E8D2B5] font-semibold">
-              {CARDS.find((c) => c.id === hoveredCard)?.name}
-            </span>
-            <span className="text-white/60">•</span>
-            <span className="text-white/80">
-              {CARDS.find((c) => c.id === hoveredCard)?.badge}
-            </span>
-          </div>
-        ) : (
-          <div className="text-[11px] font-mono tracking-wider text-[#590907]/40 uppercase pointer-events-none select-none hidden sm:block">
-            DESIQO 3D SHOWCASE // HOVER TO INSPECT CARDS
-          </div>
-        )}
-      </div>
     </div>
   );
 }
