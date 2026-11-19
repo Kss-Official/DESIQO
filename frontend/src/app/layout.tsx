@@ -15,9 +15,16 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DESIQO | Kalpanaaa Software Solutions - AI Agent Architecture",
+  title: "DesiQo | Kalpanaaa Software Solutions - AI Agent Architecture",
   description:
-    "DESIQO is an enterprise AI-assisted platform by Kalpanaaa Software Solutions that prepares brand-safe social media content around company events and festivals with 7-agent governance.",
+    "DesiQo is an enterprise AI-assisted platform by Kalpanaaa Software Solutions that prepares brand-safe social media content around company events and festivals with 7-agent governance.",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [{ url: "/icon.png" }],
+  },
 };
 
 export default function RootLayout({
