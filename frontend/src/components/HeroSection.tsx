@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import HeroPhonesShowcase from "./HeroPhonesShowcase";
 
@@ -141,8 +140,12 @@ export default function HeroSection() {
           <span className="text-[9.5px] font-mono tracking-[0.2em] uppercase text-[#590907]/60 group-hover:text-[#590907] transition-colors duration-200">
             Scroll to explore
           </span>
-          <div className="w-7 h-7 rounded-full border border-[#590907]/25 bg-white/50 backdrop-blur-sm flex items-center justify-center shadow-xs group-hover:border-[#590907]/60 group-hover:bg-white/90 group-hover:shadow-md transition-all duration-300">
-            <ChevronDown className="w-3.5 h-3.5 text-[#590907] animate-bounce" />
+          <div className="w-[18px] h-[28px] rounded-full border-[1.5px] border-[#590907]/35 bg-white/40 backdrop-blur-xs flex items-start justify-center pt-1.5 shadow-2xs group-hover:border-[#590907]/75 group-hover:bg-white/75 transition-all duration-300">
+            <motion.div
+              animate={{ y: [0, 6, 0], opacity: [1, 0.25, 1] }}
+              transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+              className="w-[2.5px] h-[5px] rounded-full bg-[#590907]"
+            />
           </div>
         </button>
       </div>
