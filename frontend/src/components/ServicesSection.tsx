@@ -207,11 +207,11 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        {/* Horizontal Scroll Carousel Track (Uniform Cards, No Expansion) */}
+        {/* Horizontal Scroll Carousel Track (Compact Narrow Cards) */}
         <div className="w-full overflow-hidden">
           <div
             ref={scrollContainerRef}
-            className="flex items-stretch gap-6 overflow-x-auto pb-8 pt-1 px-1 scroll-smooth snap-x snap-mandatory focus:outline-none"
+            className="flex items-stretch gap-4 sm:gap-5 overflow-x-auto pb-8 pt-1 px-1 scroll-smooth snap-x snap-mandatory focus:outline-none"
             style={{
               scrollbarWidth: "thin",
               scrollbarColor: "#590907 #E8D2B5",
@@ -223,38 +223,40 @@ export default function ServicesSection() {
               return (
                 <div
                   key={agent.id}
-                  className="w-[300px] sm:w-[320px] md:w-[340px] snap-start shrink-0 rounded-3xl glass-panel-milled border border-[#590907]/15 hover:border-[#590907]/35 hover:bg-white/70 text-[#220709] shadow-sm hover:shadow-xl p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 group"
+                  className="w-[240px] sm:w-[260px] md:w-[275px] snap-start shrink-0 rounded-3xl glass-panel-milled border border-[#590907]/15 hover:border-[#590907]/35 hover:bg-white/70 text-[#220709] shadow-sm hover:shadow-xl p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 group"
                 >
-                  {/* Card Header Row */}
-                  <div className="flex items-center justify-between pb-4 border-b border-[#590907]/15">
-                    <div className="flex items-center gap-3">
-                      <span className="text-sm font-mono font-bold tracking-wider text-[#590907]">
-                        {agent.number}
-                      </span>
-                      <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-white/80 text-[#590907] border border-[#590907]/20 shadow-2xs transition-colors group-hover:bg-[#590907] group-hover:text-[#FAF4EB]">
-                        <Icon size={18} strokeWidth={2.2} />
+                  <div>
+                    {/* Card Header Row */}
+                    <div className="flex items-center justify-between pb-3.5 border-b border-[#590907]/15">
+                      <div className="flex items-center gap-2.5">
+                        <span className="text-xs font-mono font-bold tracking-wider text-[#590907]">
+                          {agent.number}
+                        </span>
+                        <div className="w-8 h-8 rounded-xl flex items-center justify-center bg-white/80 text-[#590907] border border-[#590907]/20 shadow-2xs transition-colors group-hover:bg-[#590907] group-hover:text-[#FAF4EB]">
+                          <Icon size={16} strokeWidth={2.2} />
+                        </div>
+                      </div>
+
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/80 text-[#590907] border border-[#590907]/15 shadow-2xs transition-all duration-300 group-hover:bg-[#590907] group-hover:text-[#FAF4EB] group-hover:rotate-45">
+                        <ArrowUpRight size={15} strokeWidth={2.5} />
                       </div>
                     </div>
 
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center bg-white/80 text-[#590907] border border-[#590907]/15 shadow-2xs transition-all duration-300 group-hover:bg-[#590907] group-hover:text-[#FAF4EB] group-hover:rotate-45">
-                      <ArrowUpRight size={16} strokeWidth={2.5} />
+                    {/* Card Title & Role */}
+                    <div className="pt-3.5">
+                      <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[#220709] leading-snug">
+                        {agent.name}
+                      </h3>
+                      <p className="text-[11px] sm:text-xs mt-1 font-medium text-[#5A6054] line-clamp-1">
+                        {agent.role}
+                      </p>
                     </div>
-                  </div>
 
-                  {/* Card Title & Role */}
-                  <div className="pt-4">
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#220709]">
-                      {agent.name}
-                    </h3>
-                    <p className="text-xs mt-1 font-medium text-[#5A6054] line-clamp-1">
-                      {agent.role}
+                    {/* Card Description */}
+                    <p className="mt-3.5 text-[#5A6054] text-xs leading-relaxed line-clamp-5">
+                      {agent.description}
                     </p>
                   </div>
-
-                  {/* Card Description */}
-                  <p className="mt-4 text-[#5A6054] text-xs leading-relaxed line-clamp-5">
-                    {agent.description}
-                  </p>
                 </div>
               );
             })}
