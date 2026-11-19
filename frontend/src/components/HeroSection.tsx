@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import HeroPhonesShowcase from "./HeroPhonesShowcase";
 
 const PLATFORMS = ["Instagram", "Facebook", "Twitter", "LinkedIn"];
 
 export default function HeroSection() {
   const [platformIndex, setPlatformIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("Instagram");
+  const [isDeleting, setIsDeleting] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   // Scroll progress linked across the Hero section
@@ -28,12 +30,40 @@ export default function HeroSection() {
   const glowOpacity1 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.85, 0.65]);
   const glowOpacity2 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.9, 0.75]);
 
+  // Typewriter effect: types character by character, pauses with shimmer sweep, then backspaces
   useEffect(() => {
-    const interval = setInterval(() => {
-      setPlatformIndex((prev) => (prev + 1) % PLATFORMS.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
+    const fullWord = PLATFORMS[platformIndex];
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting) {
+      if (currentText.length < fullWord.length) {
+        // Typing next character (natural typing rhythm)
+        timer = setTimeout(() => {
+          setCurrentText(fullWord.slice(0, currentText.length + 1));
+        }, 110);
+      } else {
+        // Full word typed: pause to let user view and watch the shimmer beam sweep across
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2100);
+      }
+    } else {
+      if (currentText.length > 0) {
+        // Backspacing character by character
+        timer = setTimeout(() => {
+          setCurrentText(fullWord.slice(0, currentText.length - 1));
+        }, 55);
+      } else {
+        // Completely deleted: brief pause before starting next platform word
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setPlatformIndex((prev) => (prev + 1) % PLATFORMS.length);
+        }, 320);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, platformIndex]);
 
   const handleScrollDown = () => {
     const target = document.getElementById("agents");
@@ -89,19 +119,14 @@ export default function HeroSection() {
             <br />
             <span className="inline-flex items-baseline">
               <span className="text-[#221d18]">For&nbsp;</span>
-              <span className="inline-grid grid-cols-1 [clip-path:inset(-10px_-8px_-26px_-8px)] pb-1 -mb-1">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={PLATFORMS[platformIndex]}
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: "0%", opacity: 1 }}
-                    exit={{ y: "-100%", opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="col-start-1 row-start-1 text-[#590907] animate-text-shimmer"
-                  >
-                    {PLATFORMS[platformIndex]}
-                  </motion.span>
-                </AnimatePresence>
+              <span className="inline-flex items-baseline text-[#590907]">
+                <span className="animate-text-shimmer">
+                  {currentText}
+                </span>
+                <span
+                  className="inline-block w-[3px] sm:w-[3.5px] md:w-[4px] h-[0.82em] bg-[#590907] ml-1 translate-y-[1px] md:translate-y-[2px] rounded-xs animate-cursor-blink select-none"
+                  aria-hidden="true"
+                />
               </span>
             </span>
             <br />

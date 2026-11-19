@@ -175,6 +175,23 @@ body {
   animation: text-shimmer-sweep 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Typewriter Cursor Blink */
+@keyframes cursor-blink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 0.85s infinite;
+}
+
 /* Infinite Marquee */
 @keyframes marquee {
   0% { transform: translateX(0%); }
