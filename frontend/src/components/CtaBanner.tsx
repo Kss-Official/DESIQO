@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Sparkles, Terminal } from "lucide-react";
+import { ArrowRight, Terminal } from "lucide-react";
 
 export default function CtaBanner() {
   return (
@@ -12,17 +12,7 @@ export default function CtaBanner() {
           <div className="absolute -top-32 -right-32 w-[550px] h-[550px] rounded-full bg-[radial-gradient(circle,_rgba(232,210,181,0.25)_0%,_transparent_75%)] blur-[100px] pointer-events-none" />
           <div className="absolute -bottom-28 -left-28 w-[450px] h-[450px] rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.15)_0%,_transparent_70%)] blur-[90px] pointer-events-none" />
 
-          {/* Micro HUD Crosshair */}
-          <div className="absolute top-6 right-8 text-[#E8D2B5]/50 font-mono text-[11px] hidden sm:block">
-            DESIQO // PILOT GATE
-          </div>
-
           <div className="relative z-10 max-w-3xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/30 border border-[#E8D2B5]/35 text-[11px] font-mono uppercase tracking-widest text-[#FAF4EB]">
-              <Sparkles size={12} className="text-[#E8D2B5]" />
-              <span>Kalpanaaa Software Solutions // Internal Pilot V1</span>
-            </div>
-
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-[-0.03em] leading-[1.08]">
               Elevate your social presence with{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FAF4EB] via-[#E8D2B5] to-[#c7b299] drop-shadow-[0_2px_15px_rgba(232,210,181,0.3)]">

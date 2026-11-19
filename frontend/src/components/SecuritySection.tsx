@@ -67,10 +67,6 @@ export default function SecuritySection() {
         <div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 pb-8 border-b border-[#590907]/15">
             <div>
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#5A6054] mb-3 flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-[#590907] ring-4 ring-[#590907]/30" />
-                <span>Section 8 // Security & Governance</span>
-              </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#220709] tracking-[-0.03em]">
                 Enterprise Production Safeguards
               </h2>
@@ -115,17 +111,10 @@ export default function SecuritySection() {
         <div id="phases">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 pb-8 border-b border-[#590907]/15">
             <div>
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#5A6054] mb-3 flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-[#590907] ring-4 ring-[#590907]/30" />
-                <span>Section 11 // Product Roadmap</span>
-              </div>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#220709] tracking-tight">
                 7-Phase Delivery Blueprint
               </h3>
             </div>
-            <span className="text-xs font-mono text-[#5A6054] uppercase tracking-wider font-semibold">
-              Internal Pilot (V1) → Multi-Company SaaS (Phase 7)
-            </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
