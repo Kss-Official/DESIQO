@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useCallback } from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 interface CardConfig {
   id: number;
@@ -14,7 +14,8 @@ interface CardConfig {
   delay: number;
   floatY: [number, number, number];
   floatRotate: [number, number, number];
-  depthParallax: number;
+  hoverY: number;
+  hoverScale: number;
   hitArea: {
     left: string;
     width: string;
@@ -30,11 +31,12 @@ const CARDS: CardConfig[] = [
     badge: "AI Creativity",
     src: "/images/card-layer-1.png",
     baseZ: 10,
-    duration: 5.8,
+    duration: 5.6,
     delay: 0,
-    floatY: [-5, 5, -5],
-    floatRotate: [-0.6, 0.4, -0.6],
-    depthParallax: 6,
+    floatY: [-3, 3, -3],
+    floatRotate: [-0.3, 0.3, -0.3],
+    hoverY: -4,
+    hoverScale: 1.015,
     hitArea: { left: "1.5%", width: "19%", top: "18%", bottom: "18%" },
   },
   {
@@ -43,11 +45,12 @@ const CARDS: CardConfig[] = [
     badge: "Smart Agents & Scheduling",
     src: "/images/card-layer-2.png",
     baseZ: 20,
-    duration: 6.6,
-    delay: 0.5,
-    floatY: [7, -7, 7],
-    floatRotate: [0.5, -0.4, 0.5],
-    depthParallax: 10,
+    duration: 6.2,
+    delay: 0.4,
+    floatY: [3.5, -3.5, 3.5],
+    floatRotate: [0.3, -0.2, 0.3],
+    hoverY: -5,
+    hoverScale: 1.018,
     hitArea: { left: "20%", width: "19%", top: "16%", bottom: "16%" },
   },
   {
@@ -56,11 +59,12 @@ const CARDS: CardConfig[] = [
     badge: "Central Intelligence Hub",
     src: "/images/card-layer-3.png",
     baseZ: 30,
-    duration: 5.0,
+    duration: 4.8,
     delay: 0.2,
-    floatY: [-9, 9, -9],
-    floatRotate: [-0.3, 0.3, -0.3],
-    depthParallax: 15,
+    floatY: [-5, 5, -5],
+    floatRotate: [-0.2, 0.2, -0.2],
+    hoverY: -8,
+    hoverScale: 1.025,
     hitArea: { left: "38%", width: "24%", top: "10%", bottom: "12%" },
   },
   {
@@ -69,11 +73,12 @@ const CARDS: CardConfig[] = [
     badge: "Engagement Growth +248%",
     src: "/images/card-layer-4.png",
     baseZ: 22,
-    duration: 6.2,
-    delay: 0.9,
-    floatY: [6, -6, 6],
-    floatRotate: [-0.5, 0.4, -0.5],
-    depthParallax: 10,
+    duration: 5.8,
+    delay: 0.6,
+    floatY: [3.5, -3.5, 3.5],
+    floatRotate: [-0.3, 0.2, -0.3],
+    hoverY: -5,
+    hoverScale: 1.018,
     hitArea: { left: "61%", width: "19%", top: "16%", bottom: "16%" },
   },
   {
@@ -82,11 +87,12 @@ const CARDS: CardConfig[] = [
     badge: "Multi-Format Campaigns",
     src: "/images/card-layer-5.png",
     baseZ: 12,
-    duration: 5.4,
-    delay: 0.4,
-    floatY: [-5, 6, -5],
-    floatRotate: [0.5, -0.5, 0.5],
-    depthParallax: 6,
+    duration: 5.2,
+    delay: 0.3,
+    floatY: [-3, 3, -3],
+    floatRotate: [0.3, -0.3, 0.3],
+    hoverY: -4,
+    hoverScale: 1.015,
     hitArea: { left: "79.5%", width: "19%", top: "20%", bottom: "18%" },
   },
 ];
@@ -142,15 +148,14 @@ export default function HeroPhonesShowcase() {
             key={card.id}
             className="absolute inset-0 will-change-transform pointer-events-none"
             style={{
-              zIndex: isHovered ? 50 : card.baseZ,
+              zIndex: card.baseZ, // Strict natural hierarchy preserved at all times
             }}
             animate={
               isHovered
                 ? {
-                    y: -18,
-                    scale: 1.045,
-                    rotate: 0,
-                    filter: "drop-shadow(0 28px 40px rgba(89,9,7,0.30))",
+                    y: card.hoverY,
+                    scale: card.hoverScale,
+                    filter: "brightness(1.03) drop-shadow(0 24px 36px rgba(89,9,7,0.26))",
                   }
                 : {
                     y: card.floatY,
@@ -158,16 +163,16 @@ export default function HeroPhonesShowcase() {
                     scale: 1,
                     filter:
                       card.id === 3
-                        ? "drop-shadow(0 20px 32px rgba(89,9,7,0.20))"
-                        : "drop-shadow(0 14px 24px rgba(89,9,7,0.15))",
+                        ? "drop-shadow(0 20px 32px rgba(89,9,7,0.18))"
+                        : "drop-shadow(0 14px 22px rgba(89,9,7,0.14))",
                   }
             }
             transition={
               isHovered
                 ? {
                     type: "spring",
-                    stiffness: 300,
-                    damping: 20,
+                    stiffness: 260,
+                    damping: 24,
                   }
                 : {
                     y: {
@@ -205,7 +210,7 @@ export default function HeroPhonesShowcase() {
           key={`hit-${card.id}`}
           onMouseEnter={() => setHoveredCard(card.id)}
           onMouseLeave={() => setHoveredCard(null)}
-          className="absolute cursor-pointer rounded-3xl transition-colors duration-150"
+          className="absolute cursor-pointer rounded-3xl"
           style={{
             left: card.hitArea.left,
             width: card.hitArea.width,
