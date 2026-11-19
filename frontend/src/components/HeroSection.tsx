@@ -1,14 +1,33 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import HeroPhonesShowcase from "./HeroPhonesShowcase";
 
 const PLATFORMS = ["Instagram", "Facebook", "Twitter", "LinkedIn"];
 
 export default function HeroSection() {
   const [platformIndex, setPlatformIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Scroll progress linked across the Hero section
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Smooth scroll-driven ambient background color interpolation:
+  // Warm Beige (#E8D2B5) -> Lighter Beige (#ECE0CE) -> Soft Cream (#F4EBE0) -> Ivory (#FAF6F0)
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.66, 1],
+    ["#E8D2B5", "#ECE0CE", "#F4EBE0", "#FAF6F0"]
+  );
+
+  // Subtle ambient glow attenuation as background lightens
+  const glowOpacity1 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.85, 0.65]);
+  const glowOpacity2 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.9, 0.75]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,10 +45,20 @@ export default function HeroSection() {
     }
   };
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#E8D2B5] bg-tech-grid pt-[180px] pb-24 flex flex-col justify-between">
+    <motion.section
+      ref={sectionRef}
+      style={{ backgroundColor }}
+      className="relative min-h-screen w-full overflow-hidden bg-tech-grid pt-[180px] pb-24 flex flex-col justify-between"
+    >
       {/* Precision Ambient Radial Glows */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] rounded-full bg-[radial-gradient(circle,_rgba(89,9,7,0.12)_0%,_rgba(89,9,7,0.03)_50%,_transparent_75%)] blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle,_rgba(89,9,7,0.08)_0%,_rgba(255,255,255,0.45)_50%,_transparent_75%)] blur-[110px] pointer-events-none" />
+      <motion.div
+        style={{ opacity: glowOpacity1 }}
+        className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] rounded-full bg-[radial-gradient(circle,_rgba(89,9,7,0.12)_0%,_rgba(89,9,7,0.03)_50%,_transparent_75%)] blur-[100px] pointer-events-none"
+      />
+      <motion.div
+        style={{ opacity: glowOpacity2 }}
+        className="absolute top-1/2 right-1/4 w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle,_rgba(89,9,7,0.08)_0%,_rgba(255,255,255,0.45)_50%,_transparent_75%)] blur-[110px] pointer-events-none"
+      />
 
       {/* Engineering Corner Crosshairs (+) */}
       <div className="absolute top-28 left-8 text-[#590907]/25 font-mono text-sm pointer-events-none select-none hidden md:block">
@@ -117,6 +146,6 @@ export default function HeroSection() {
           </div>
         </button>
       </div>
-    </section>
+    </motion.section>
   );
 }
