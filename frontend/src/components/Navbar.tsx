@@ -32,11 +32,10 @@ export default function Navbar() {
         : "bg-transparent py-5"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
-        {/* Left: Brand Logo & Name + Navigation Links */}
-        <div className="flex items-center gap-6 lg:gap-10">
-          {/* DesiQo Brand Logo & Name */}
-          <a href="#" className="flex items-center shrink-0 group py-1">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative flex items-center justify-between gap-4">
+        {/* Left: DesiQo Brand Logo & Name */}
+        <div className="flex items-center shrink-0">
+          <a href="#" className="flex items-center group py-1">
             <Image
               src="/images/desiqo-logo.png"
               alt="DesiQo"
@@ -46,21 +45,21 @@ export default function Navbar() {
               className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </a>
-
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-semibold uppercase tracking-wider shrink-0">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-[#5A6054] hover:text-[#590907] transition-colors duration-200 relative group py-1 whitespace-nowrap"
-              >
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#590907] transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
-          </nav>
         </div>
+
+        {/* Center: Navigation Links (Dead Center) */}
+        <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-6 lg:gap-8 text-xs font-semibold uppercase tracking-wider">
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-[#5A6054] hover:text-[#590907] transition-colors duration-200 relative group py-1 whitespace-nowrap"
+            >
+              {link.label}
+              <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#590907] transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+        </nav>
 
         {/* Right: Single-Line One-Word CTA */}
         <div className="hidden sm:flex items-center gap-3 shrink-0">
@@ -78,7 +77,7 @@ export default function Navbar() {
         {/* Mobile menu toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-[#590907] p-2 focus:outline-none"
+          className="md:hidden text-[#590907] p-2 focus:outline-none ml-auto"
           aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
