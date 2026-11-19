@@ -98,7 +98,7 @@ export default function HeroSection() {
                     animate={{ y: "0%", opacity: 1 }}
                     exit={{ y: "-100%", opacity: 0 }}
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="col-start-1 row-start-1 text-[#590907]"
+                    className="col-start-1 row-start-1 text-[#590907] animate-text-shimmer"
                   >
                     {PLATFORMS[platformIndex]}
                   </motion.span>

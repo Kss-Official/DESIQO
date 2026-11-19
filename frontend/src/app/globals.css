@@ -147,6 +147,34 @@ body {
   animation: shimmer-sweep 4s infinite cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Text Shimmer Sweep (Hero Platform Names) */
+@keyframes text-shimmer-sweep {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.animate-text-shimmer {
+  background: linear-gradient(
+    105deg,
+    #590907 0%,
+    #590907 38%,
+    #d86c6a 47%,
+    #ffffff 50%,
+    #d86c6a 53%,
+    #590907 62%,
+    #590907 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer-sweep 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Infinite Marquee */
 @keyframes marquee {
   0% { transform: translateX(0%); }
