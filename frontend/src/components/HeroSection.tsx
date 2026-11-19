@@ -47,7 +47,7 @@ export default function HeroSection() {
           >
             One platform.
             <br />
-            <span className="text-[#590907]">Every social channel.</span>
+            <span className="text-[#590907]">Every social automation.</span>
           </h1>
 
           {/* Subtitle */}
