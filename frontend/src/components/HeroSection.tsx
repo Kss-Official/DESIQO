@@ -75,6 +75,7 @@ export default function HeroSection() {
   };
   return (
     <motion.section
+      id="hero-section"
       ref={sectionRef}
       style={{ backgroundColor }}
       className="relative min-h-screen w-full overflow-hidden bg-tech-grid pt-[160px] md:pt-[170px] pb-6 flex flex-col justify-between"
