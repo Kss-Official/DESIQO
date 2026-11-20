@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowUpRight,
   Workflow,
@@ -192,74 +193,116 @@ const agentsData: AgentItem[] = [
 ];
 
 export default function ServicesSection() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const targetRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [scrollRange, setScrollRange] = useState(0);
+
+  useEffect(() => {
+    const calculateScrollRange = () => {
+      if (carouselRef.current && containerRef.current) {
+        const fullWidth = carouselRef.current.scrollWidth;
+        const visibleWidth = containerRef.current.clientWidth;
+        setScrollRange(Math.max(0, fullWidth - visibleWidth + 40));
+      }
+    };
+
+    calculateScrollRange();
+    const timer = setTimeout(calculateScrollRange, 150);
+    window.addEventListener("resize", calculateScrollRange);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", calculateScrollRange);
+    };
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Smooth scroll transformation from right to left
+  const x = useTransform(scrollYProgress, [0.04, 0.96], [0, -scrollRange]);
 
   return (
-    <section id="agents" className="relative py-24 md:py-32 px-6 md:px-12 lg:px-16 bg-[#E8D2B5] border-t border-[#590907]/15 overflow-hidden">
-      {/* Precision Ambient Glow */}
-      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(89,9,7,0.08)_0%,_transparent_70%)] blur-[120px] pointer-events-none" />
+    <section
+      id="agents"
+      ref={targetRef}
+      className="relative h-[300vh] bg-[#E8D2B5] border-t border-[#590907]/15"
+    >
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden px-6 md:px-12 lg:px-16">
+        {/* Precision Ambient Glow */}
+        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(89,9,7,0.08)_0%,_transparent_70%)] blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="mb-12 pb-6 border-b border-[#590907]/15">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#220709] tracking-[-0.03em]">
-            The 7-Agent Architecture
-          </h2>
-        </div>
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          {/* Section Header */}
+          <div className="mb-8 md:mb-10 pb-5 border-b border-[#590907]/15 flex items-center justify-between">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#220709] tracking-[-0.03em]">
+              The 7-Agent Architecture
+            </h2>
+            <div className="hidden sm:flex items-center gap-2.5 text-xs font-mono font-bold text-[#590907]">
+              <span>01</span>
+              <div className="w-24 h-1.5 bg-[#590907]/20 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-[#590907] rounded-full"
+                  style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
+                />
+              </div>
+              <span>07</span>
+            </div>
+          </div>
 
-        {/* Horizontal Scroll Carousel Track (Clean, hidden scrollbar) */}
-        <div className="w-full overflow-hidden">
-          <div
-            ref={scrollContainerRef}
-            className="flex items-stretch gap-5 overflow-x-auto pb-4 pt-1 px-1 scroll-smooth snap-x snap-mandatory focus:outline-none no-scrollbar"
-            style={{
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
-          >
-            {agentsData.map((agent) => {
-              const Icon = agent.icon;
+          {/* Horizontal Scroll Track pinned on vertical scroll */}
+          <div ref={containerRef} className="w-full overflow-hidden">
+            <motion.div
+              ref={carouselRef}
+              style={{ x }}
+              className="flex items-stretch gap-5 w-max pb-2 pt-1"
+            >
+              {agentsData.map((agent) => {
+                const Icon = agent.icon;
 
-              return (
-                <div
-                  key={agent.id}
-                  className="w-[270px] sm:w-[285px] min-h-[490px] sm:min-h-[520px] snap-start shrink-0 rounded-3xl glass-panel-milled border border-[#590907]/15 hover:border-[#590907]/35 hover:bg-white/70 text-[#220709] shadow-sm hover:shadow-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 group"
-                >
-                  <div>
-                    {/* Card Header Row */}
-                    <div className="flex items-center justify-between pb-4 border-b border-[#590907]/15">
-                      <div className="flex items-center gap-3">
-                        <span className="text-sm font-mono font-bold tracking-wider text-[#590907]">
-                          {agent.number}
-                        </span>
-                        <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[#590907] text-[#FAF4EB] shadow-xs">
-                          <Icon size={18} strokeWidth={2.2} />
+                return (
+                  <div
+                    key={agent.id}
+                    className="w-[270px] sm:w-[285px] min-h-[480px] sm:min-h-[510px] shrink-0 rounded-3xl glass-panel-milled border border-[#590907]/15 hover:border-[#590907]/35 hover:bg-white/70 text-[#220709] shadow-sm hover:shadow-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 group"
+                  >
+                    <div>
+                      {/* Card Header Row */}
+                      <div className="flex items-center justify-between pb-4 border-b border-[#590907]/15">
+                        <div className="flex items-center gap-3">
+                          <span className="text-sm font-mono font-bold tracking-wider text-[#590907]">
+                            {agent.number}
+                          </span>
+                          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[#590907] text-[#FAF4EB] shadow-xs">
+                            <Icon size={18} strokeWidth={2.2} />
+                          </div>
+                        </div>
+
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#590907] text-[#FAF4EB] shadow-xs transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                          <ArrowUpRight size={16} strokeWidth={2.5} />
                         </div>
                       </div>
 
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#590907] text-[#FAF4EB] shadow-xs transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                        <ArrowUpRight size={16} strokeWidth={2.5} />
+                      {/* Card Title & Role */}
+                      <div className="pt-4">
+                        <h3 className="text-xl font-bold tracking-tight text-[#220709] leading-snug">
+                          {agent.name}
+                        </h3>
+                        <p className="text-xs mt-1 font-medium text-[#5A6054] line-clamp-1">
+                          {agent.role}
+                        </p>
                       </div>
-                    </div>
 
-                    {/* Card Title & Role */}
-                    <div className="pt-4">
-                      <h3 className="text-xl font-bold tracking-tight text-[#220709] leading-snug">
-                        {agent.name}
-                      </h3>
-                      <p className="text-xs mt-1 font-medium text-[#5A6054] line-clamp-1">
-                        {agent.role}
+                      {/* Card Description */}
+                      <p className="mt-4 text-[#5A6054] text-xs leading-relaxed line-clamp-6">
+                        {agent.description}
                       </p>
                     </div>
-
-                    {/* Card Description */}
-                    <p className="mt-4 text-[#5A6054] text-xs leading-relaxed line-clamp-6">
-                      {agent.description}
-                    </p>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </motion.div>
           </div>
         </div>
       </div>
