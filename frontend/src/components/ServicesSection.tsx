@@ -228,15 +228,15 @@ export default function ServicesSection() {
     <section
       id="agents"
       ref={targetRef}
-      className="relative h-[300vh] bg-[#E8D2B5] border-t border-[#590907]/15"
+      className="relative h-[300vh] bg-[#E8D2B5] border-t border-[#590907]/15 scroll-mt-24"
     >
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden px-6 md:px-12 lg:px-16">
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden px-6 md:px-12 lg:px-16 pt-24 md:pt-28 pb-8 md:pb-12">
         {/* Precision Ambient Glow */}
         <div className="absolute top-1/2 left-0 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(89,9,7,0.08)_0%,_transparent_70%)] blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
           {/* Section Header */}
-          <div className="mb-8 md:mb-10 pb-5 border-b border-[#590907]/15">
+          <div className="mb-6 md:mb-8 pb-4 border-b border-[#590907]/15">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#220709] tracking-[-0.03em]">
               The 7-Agent Architecture
             </h2>
@@ -255,7 +255,7 @@ export default function ServicesSection() {
                 return (
                   <div
                     key={agent.id}
-                    className="w-[270px] sm:w-[285px] min-h-[480px] sm:min-h-[510px] shrink-0 rounded-3xl glass-panel-milled border border-[#590907]/15 hover:border-[#590907]/35 hover:bg-white/70 text-[#220709] shadow-sm hover:shadow-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 group"
+                    className="w-[270px] sm:w-[285px] h-[440px] sm:h-[470px] md:h-[485px] shrink-0 rounded-3xl glass-panel-milled border border-[#590907]/15 hover:border-[#590907]/35 hover:bg-white/70 text-[#220709] shadow-sm hover:shadow-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 group"
                   >
                     <div>
                       {/* Card Header Row */}
