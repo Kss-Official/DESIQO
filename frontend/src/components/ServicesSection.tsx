@@ -236,20 +236,10 @@ export default function ServicesSection() {
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
           {/* Section Header */}
-          <div className="mb-8 md:mb-10 pb-5 border-b border-[#590907]/15 flex items-center justify-between">
+          <div className="mb-8 md:mb-10 pb-5 border-b border-[#590907]/15">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#220709] tracking-[-0.03em]">
               The 7-Agent Architecture
             </h2>
-            <div className="hidden sm:flex items-center gap-2.5 text-xs font-mono font-bold text-[#590907]">
-              <span>01</span>
-              <div className="w-24 h-1.5 bg-[#590907]/20 rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-[#590907] rounded-full"
-                  style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
-                />
-              </div>
-              <span>07</span>
-            </div>
           </div>
 
           {/* Horizontal Scroll Track pinned on vertical scroll */}
