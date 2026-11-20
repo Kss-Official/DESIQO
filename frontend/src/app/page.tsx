@@ -6,21 +6,21 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import SecuritySection from "@/components/SecuritySection";
+import MarketingCapabilitiesSection from "@/components/MarketingCapabilitiesSection";
 import TrustedLogosArc from "@/components/TrustedLogosArc";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
-import CursorSplash from "@/components/CursorSplash";
 
 export default function Home() {
   return (
     <SmoothScroll>
       <main className="min-h-screen bg-[#E8D2B5] text-[#220709] relative selection:bg-[#590907] selection:text-[#FAF4EB]">
-        <CursorSplash />
         <Navbar />
         <HeroSection />
         <ServicesSection />
         <CaseStudiesSection />
         <SecuritySection />
+        <MarketingCapabilitiesSection />
         <TrustedLogosArc />
         <CtaBanner />
         <Footer />
