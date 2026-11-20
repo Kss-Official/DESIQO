@@ -47,23 +47,12 @@ export default function SecuritySection() {
     },
   ];
 
-  const deliveryPhases = [
-    { phase: "Phase 1", title: "Foundation", status: "Complete", desc: "Workspace schema, token vault, Gemini client, festival calendar baseline" },
-    { phase: "Phase 2", title: "Event & Content", status: "Active", desc: "Research Agent, Content Agent, platform caption generation & validation" },
-    { phase: "Phase 3", title: "Design & Posters", status: "In Progress", desc: "Manual Stitch exploration, SVG/HTML brand templates & programmatic renderer" },
-    { phase: "Phase 4", title: "Review Safeguards", status: "Ready", desc: "Versioned review queue, cultural safety checklist, mandatory approval gate" },
-    { phase: "Phase 5", title: "Publishing Adapter", status: "Planned", desc: "LinkedIn Company Page API, time-zone scheduler, idempotency tracking" },
-    { phase: "Phase 6", title: "Monitoring & Audit", status: "Planned", desc: "Token expiry warnings, cost tracking, immutable audit trail, analytics" },
-    { phase: "Phase 7", title: "Enterprise Expansion", status: "Future", desc: "Multi-company workspace isolation, additional platforms (Pinterest, X)" },
-  ];
-
   return (
     <section id="security" className="relative py-32 px-6 md:px-12 lg:px-16 bg-[#E8D2B5] border-t border-[#590907]/15 overflow-hidden">
       {/* Precision Ambient Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[750px] h-[750px] rounded-full bg-[radial-gradient(circle,_rgba(89,9,7,0.08)_0%,_transparent_70%)] blur-[150px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10 space-y-28">
-        {/* Part 1: Security & Governance */}
+      <div className="max-w-7xl mx-auto relative z-10">
         <div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 pb-8 border-b border-[#590907]/15">
             <div>
@@ -104,52 +93,6 @@ export default function SecuritySection() {
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        {/* Part 2: Section 11 Delivery Phases */}
-        <div id="phases">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 pb-8 border-b border-[#590907]/15">
-            <div>
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#220709] tracking-tight">
-                7-Phase Delivery Blueprint
-              </h3>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {deliveryPhases.map((phase) => (
-              <div
-                key={phase.phase}
-                className="p-6 rounded-2xl glass-panel-milled border border-[#590907]/15 flex flex-col justify-between space-y-4 hover:border-[#590907]/35 transition-all duration-300 group shadow-md"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-[#590907]">
-                    {phase.phase}
-                  </span>
-                  <span
-                    className={`text-[9px] font-mono uppercase px-2.5 py-0.5 rounded-full ${
-                      phase.status === "Complete"
-                        ? "bg-emerald-100 text-emerald-800 border border-emerald-400 font-bold"
-                        : phase.status === "Active"
-                        ? "bg-[#590907] text-[#FAF4EB] border border-[#590907] animate-pulse font-bold"
-                        : "bg-white/70 text-[#5A6054] border border-[#590907]/20"
-                    }`}
-                  >
-                    {phase.status}
-                  </span>
-                </div>
-
-                <div>
-                  <h4 className="text-lg font-bold text-[#220709] tracking-tight">
-                    {phase.title}
-                  </h4>
-                  <p className="text-xs text-[#484c42] mt-2 leading-[1.65]">
-                    {phase.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

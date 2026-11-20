@@ -21,8 +21,8 @@ export default function Navbar() {
     { label: "Agents", href: "#agents" },
     { label: "Workflow", href: "#workflow" },
     { label: "Safeguards", href: "#security" },
+    { label: "Capabilities", href: "#capabilities" },
     { label: "Platforms", href: "#platforms" },
-    { label: "Roadmap", href: "#phases" },
   ];
 
   return (

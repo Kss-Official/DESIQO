@@ -34,13 +34,13 @@ export default function Footer() {
       ],
     },
     {
-      title: "Roadmap (Phases)",
+      title: "Capabilities",
       links: [
-        { label: "Phase 1: Foundation (V1)", href: "#phases" },
-        { label: "Phase 2: Event & Content", href: "#phases" },
-        { label: "Phase 3: Design & Posters", href: "#phases" },
-        { label: "Phase 5: LinkedIn OAuth", href: "#phases" },
-        { label: "Phase 7: Multi-Tenant SaaS", href: "#phases" },
+        { label: "Content & Campaigns", href: "#capabilities" },
+        { label: "AI Visuals & Posters", href: "#capabilities" },
+        { label: "Smart Scheduling", href: "#capabilities" },
+        { label: "Brand Identity Vault", href: "#capabilities" },
+        { label: "Omnichannel Dispatch", href: "#capabilities" },
       ],
     },
     {
