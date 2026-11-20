@@ -207,14 +207,14 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        {/* Horizontal Scroll Carousel Track (Elongated Vertical Cards) */}
+        {/* Horizontal Scroll Carousel Track (Clean, hidden scrollbar) */}
         <div className="w-full overflow-hidden">
           <div
             ref={scrollContainerRef}
-            className="flex items-stretch gap-5 overflow-x-auto pb-8 pt-1 px-1 scroll-smooth snap-x snap-mandatory focus:outline-none"
+            className="flex items-stretch gap-5 overflow-x-auto pb-4 pt-1 px-1 scroll-smooth snap-x snap-mandatory focus:outline-none no-scrollbar"
             style={{
-              scrollbarWidth: "thin",
-              scrollbarColor: "#590907 #E8D2B5",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
             }}
           >
             {agentsData.map((agent) => {
