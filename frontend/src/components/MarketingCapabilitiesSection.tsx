@@ -377,11 +377,10 @@ export default function MarketingCapabilitiesSection() {
                   return (
                     <div
                       key={idx}
-                      className={`py-1 rounded-lg flex items-center justify-center ${
-                        isHighlighted
+                      className={`py-1 rounded-lg flex items-center justify-center ${isHighlighted
                           ? "bg-[#3D080B] text-white font-bold shadow-xs"
                           : "hover:bg-[#FAF7F2]"
-                      }`}
+                        }`}
                     >
                       {d}
                     </div>
@@ -400,14 +399,12 @@ export default function MarketingCapabilitiesSection() {
               <button
                 type="button"
                 onClick={() => setToggleSchedule(!toggleSchedule)}
-                className={`w-9 h-5 rounded-full transition-colors relative focus:outline-none ${
-                  toggleSchedule ? "bg-[#3D080B]" : "bg-[#DFCBB5]"
-                }`}
+                className={`w-9 h-5 rounded-full transition-colors relative focus:outline-none ${toggleSchedule ? "bg-[#3D080B]" : "bg-[#DFCBB5]"
+                  }`}
               >
                 <div
-                  className={`w-3.5 h-3.5 rounded-full bg-white transition-transform absolute top-0.5 ${
-                    toggleSchedule ? "right-1" : "left-1"
-                  }`}
+                  className={`w-3.5 h-3.5 rounded-full bg-white transition-transform absolute top-0.5 ${toggleSchedule ? "right-1" : "left-1"
+                    }`}
                 />
               </button>
             </div>
