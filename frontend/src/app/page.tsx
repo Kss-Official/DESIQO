@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import SecuritySection from "@/components/SecuritySection";
+import MarketingCapabilitiesSection from "@/components/MarketingCapabilitiesSection";
 import TrustedLogosArc from "@/components/TrustedLogosArc";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
@@ -19,6 +20,7 @@ export default function Home() {
         <ServicesSection />
         <CaseStudiesSection />
         <SecuritySection />
+        <MarketingCapabilitiesSection />
         <TrustedLogosArc />
         <CtaBanner />
         <Footer />

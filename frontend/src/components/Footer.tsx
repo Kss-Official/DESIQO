@@ -1,29 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, Mail, Clock, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 
 export default function Footer() {
-  const [timeStr, setTimeStr] = useState<string>("12:00:00 PM");
   const [currentYear, setCurrentYear] = useState<number>(2026);
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
-    const updateTime = () => {
-      const now = new Date();
-      const formatted = now.toLocaleTimeString("en-US", {
-        timeZone: "Asia/Kolkata",
-        hour12: true,
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-      setTimeStr(formatted);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
   }, []);
 
   const navColumns = [
@@ -50,13 +34,13 @@ export default function Footer() {
       ],
     },
     {
-      title: "Roadmap (Phases)",
+      title: "Capabilities",
       links: [
-        { label: "Phase 1: Foundation (V1)", href: "#phases" },
-        { label: "Phase 2: Event & Content", href: "#phases" },
-        { label: "Phase 3: Design & Posters", href: "#phases" },
-        { label: "Phase 5: LinkedIn OAuth", href: "#phases" },
-        { label: "Phase 7: Multi-Tenant SaaS", href: "#phases" },
+        { label: "Content & Campaigns", href: "#capabilities" },
+        { label: "AI Visuals & Posters", href: "#capabilities" },
+        { label: "Smart Scheduling", href: "#capabilities" },
+        { label: "Brand Identity Vault", href: "#capabilities" },
+        { label: "Omnichannel Dispatch", href: "#capabilities" },
       ],
     },
     {
@@ -100,16 +84,15 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-sm font-bold tracking-[0.22em] text-[#590907] uppercase">
-                  DESIQO // KALPANAAA
+                  DESIQO
                 </span>
                 <span className="text-[9px] font-mono tracking-widest text-[#5A6054] font-bold">
-                  CODE . INNOVATE . ELIVATE .
+                  CODE . INNOVATE . ELEVATE
                 </span>
               </div>
             </div>
 
             <p className="text-sm text-[#484c42] max-w-sm leading-relaxed font-normal">
-              Kalpanaaa Software Solutions Pvt Ltd — Technical Architecture Document DESIQO-TAD-001 (Version 1.1).
               Building governed, multi-agent creative automation for modern enterprises.
             </p>
 
@@ -169,28 +152,12 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Row: Location & Live Real-Time Ticking Digital Clock */}
-        <div className="pt-10 border-t border-[#590907]/15 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          {/* Bottom Left: Location & Digital Clock */}
-          <div className="space-y-2">
-            <p className="text-xs font-mono uppercase tracking-wider text-[#5A6054] font-bold">
-              Prepared by DESIQO Project Team // Kalpanaaa Software Solutions Pvt Ltd
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#590907] animate-pulse" />
-              <div className="text-3xl sm:text-4xl font-extrabold font-mono tracking-wider text-[#590907] tabular-nums flex items-baseline gap-2">
-                <span>{timeStr}</span>
-                <span className="text-xs text-[#5A6054] font-mono tracking-normal font-semibold">
-                  (IST / UTC+5:30)
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Right: Copyright & Document Control */}
-          <div className="text-xs text-[#5A6054] font-mono space-y-1 md:text-right font-medium">
-            <p>© {currentYear} Kalpanaaa Software Solutions Pvt Ltd. All rights reserved.</p>
-            <p>Document ID: DESIQO-TAD-001 | Classification: Internal — Confidential</p>
+        {/* Bottom Row: Copyright */}
+        <div className="pt-8 border-t border-[#590907]/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#5A6054] font-mono font-medium">
+          <p>© {currentYear} DESIQO. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <a href="#" className="hover:text-[#590907] transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-[#590907] transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

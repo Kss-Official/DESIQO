@@ -73,9 +73,6 @@ export default function TrustedLogosArc() {
       </div>
 
       <div className="max-w-7xl mx-auto text-center relative z-10">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/70 border border-[#590907]/20 text-[11px] font-mono uppercase tracking-widest text-[#590907] mb-4 shadow-sm font-bold">
-          <span>Section 6 // Platform Adapters</span>
-        </div>
         <h2 className="text-3xl md:text-5xl font-black text-[#220709] tracking-tight">
           Supported Publishing Platforms & Ecosystem
         </h2>

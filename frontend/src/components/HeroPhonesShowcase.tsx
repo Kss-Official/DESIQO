@@ -14,14 +14,9 @@ interface CardConfig {
   delay: number;
   floatY: [number, number, number];
   floatRotate: [number, number, number];
-  hoverY: number;
-  hoverScale: number;
-  hitArea: {
-    left: string;
-    width: string;
-    top: string;
-    bottom: string;
-  };
+  left: string;
+  top: string;
+  width: string;
 }
 
 const CARDS: CardConfig[] = [
@@ -29,71 +24,71 @@ const CARDS: CardConfig[] = [
     id: 1,
     name: "Style Your Feed",
     badge: "AI Creativity",
-    src: "/images/card-layer-1.png",
+    src: "/images/cards/card-1.png",
     baseZ: 10,
     duration: 5.6,
     delay: 0,
-    floatY: [-3, 3, -3],
-    floatRotate: [-0.3, 0.3, -0.3],
-    hoverY: -4,
-    hoverScale: 1.015,
-    hitArea: { left: "1.5%", width: "19%", top: "18%", bottom: "18%" },
+    floatY: [-6, 6, -6],
+    floatRotate: [-0.6, 0.4, -0.6],
+    left: "-2.4%",
+    top: "19.0%",
+    width: "28.0%",
   },
   {
     id: 2,
     name: "Automate. Create. Grow.",
     badge: "Smart Agents & Scheduling",
-    src: "/images/card-layer-2.png",
+    src: "/images/cards/card-2.png",
     baseZ: 20,
     duration: 6.2,
     delay: 0.4,
-    floatY: [3.5, -3.5, 3.5],
-    floatRotate: [0.3, -0.2, 0.3],
-    hoverY: -5,
-    hoverScale: 1.018,
-    hitArea: { left: "20%", width: "19%", top: "16%", bottom: "16%" },
+    floatY: [7, -7, 7],
+    floatRotate: [0.5, -0.3, 0.5],
+    left: "16.1%",
+    top: "16.4%",
+    width: "28.0%",
   },
   {
     id: 3,
     name: "Your Brand. Every Channel.",
     badge: "Central Intelligence Hub",
-    src: "/images/card-layer-3.png",
+    src: "/images/cards/card-3.png",
     baseZ: 30,
     duration: 4.8,
     delay: 0.2,
-    floatY: [-5, 5, -5],
-    floatRotate: [-0.2, 0.2, -0.2],
-    hoverY: -8,
-    hoverScale: 1.025,
-    hitArea: { left: "38%", width: "24%", top: "10%", bottom: "12%" },
+    floatY: [-9, 9, -9],
+    floatRotate: [-0.3, 0.3, -0.3],
+    left: "34.8%",
+    top: "10.2%",
+    width: "32.0%",
   },
   {
     id: 4,
     name: "Track. Analyze. Optimize.",
     badge: "Engagement Growth +248%",
-    src: "/images/card-layer-4.png",
+    src: "/images/cards/card-4.png",
     baseZ: 22,
     duration: 5.8,
     delay: 0.6,
-    floatY: [3.5, -3.5, 3.5],
-    floatRotate: [-0.3, 0.2, -0.3],
-    hoverY: -5,
-    hoverScale: 1.018,
-    hitArea: { left: "61%", width: "19%", top: "16%", bottom: "16%" },
+    floatY: [7, -7, 7],
+    floatRotate: [-0.4, 0.4, -0.4],
+    left: "54.4%",
+    top: "17.6%",
+    width: "30.3%",
   },
   {
     id: 5,
     name: "Turn Ideas Into Impact",
     badge: "Multi-Format Campaigns",
-    src: "/images/card-layer-5.png",
+    src: "/images/cards/card-5.png",
     baseZ: 12,
     duration: 5.2,
     delay: 0.3,
-    floatY: [-3, 3, -3],
-    floatRotate: [0.3, -0.3, 0.3],
-    hoverY: -4,
-    hoverScale: 1.015,
-    hitArea: { left: "79.5%", width: "19%", top: "20%", bottom: "18%" },
+    floatY: [-6, 6, -6],
+    floatRotate: [0.5, -0.5, 0.5],
+    left: "74.1%",
+    top: "25.0%",
+    width: "27.6%",
   },
 ];
 
@@ -139,23 +134,28 @@ export default function HeroPhonesShowcase() {
       {/* Precision ambient backlight glow */}
       <div className="absolute inset-x-8 top-12 bottom-8 bg-[radial-gradient(ellipse_at_center,_rgba(89,9,7,0.16)_0%,_rgba(255,255,255,0.4)_45%,_transparent_75%)] blur-3xl pointer-events-none -z-10 scale-95" />
 
-      {/* Render 5 independently animated phone card layers */}
+      {/* Render 5 independent full 3D phone cards */}
       {CARDS.map((card) => {
         const isHovered = hoveredCard === card.id;
 
         return (
           <motion.div
             key={card.id}
-            className="absolute inset-0 will-change-transform pointer-events-none"
+            onMouseEnter={() => setHoveredCard(card.id)}
+            onMouseLeave={() => setHoveredCard(null)}
+            className="absolute will-change-transform cursor-pointer"
             style={{
-              zIndex: card.baseZ, // Strict natural hierarchy preserved at all times
+              left: card.left,
+              top: card.top,
+              width: card.width,
+              zIndex: isHovered ? 50 : card.baseZ,
             }}
             animate={
               isHovered
                 ? {
-                    y: card.hoverY,
-                    scale: card.hoverScale,
-                    filter: "brightness(1.03) drop-shadow(0 24px 36px rgba(89,9,7,0.26))",
+                    y: -16,
+                    scale: 1.05,
+                    filter: "drop-shadow(0 28px 45px rgba(89,9,7,0.32))",
                   }
                 : {
                     y: card.floatY,
@@ -163,16 +163,16 @@ export default function HeroPhonesShowcase() {
                     scale: 1,
                     filter:
                       card.id === 3
-                        ? "drop-shadow(0 20px 32px rgba(89,9,7,0.18))"
-                        : "drop-shadow(0 14px 22px rgba(89,9,7,0.14))",
+                        ? "drop-shadow(0 20px 35px rgba(89,9,7,0.22))"
+                        : "drop-shadow(0 14px 25px rgba(89,9,7,0.16))",
                   }
             }
             transition={
               isHovered
                 ? {
                     type: "spring",
-                    stiffness: 260,
-                    damping: 24,
+                    stiffness: 280,
+                    damping: 22,
                   }
                 : {
                     y: {
@@ -187,40 +187,24 @@ export default function HeroPhonesShowcase() {
                       ease: "easeInOut",
                       delay: card.delay,
                     },
-                    scale: { duration: 0.35, ease: "easeOut" },
-                    filter: { duration: 0.35, ease: "easeOut" },
+                    scale: { duration: 0.3, ease: "easeOut" },
+                    filter: { duration: 0.3, ease: "easeOut" },
                   }
             }
           >
-            <Image
-              src={card.src}
-              alt={card.name}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-              className="object-contain"
-            />
+            <div className="relative w-full aspect-[682/1024]">
+              <Image
+                src={card.src}
+                alt={card.name}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 35vw, 400px"
+                className="object-contain"
+              />
+            </div>
           </motion.div>
         );
       })}
-
-      {/* Interactive Hit Areas for each of the 5 cards */}
-      {CARDS.map((card) => (
-        <div
-          key={`hit-${card.id}`}
-          onMouseEnter={() => setHoveredCard(card.id)}
-          onMouseLeave={() => setHoveredCard(null)}
-          className="absolute cursor-pointer rounded-3xl"
-          style={{
-            left: card.hitArea.left,
-            width: card.hitArea.width,
-            top: card.hitArea.top,
-            bottom: card.hitArea.bottom,
-            zIndex: 40,
-          }}
-          title={card.name}
-        />
-      ))}
     </div>
   );
 }

@@ -49,6 +49,7 @@ body {
 /* Custom Ultra-Slim Scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
+  height: 0px;
 }
 ::-webkit-scrollbar-track {
   background: #E8D2B5;
@@ -60,6 +61,17 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #7a0e12;
+}
+
+/* Utility to hide scrollbars while maintaining smooth touch/wheel scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Optical Milled Glassmorphism for Light/Warm Palette */
@@ -145,6 +157,54 @@ body {
   );
   transform: translateX(-150%);
   animation: shimmer-sweep 4s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Text Shimmer Sweep (Hero Platform Names) */
+@keyframes text-shimmer-sweep {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.animate-text-shimmer {
+  display: inline-block;
+  padding-bottom: 0.3em;
+  margin-bottom: -0.3em;
+  background: linear-gradient(
+    105deg,
+    #590907 0%,
+    #590907 38%,
+    #d86c6a 47%,
+    #ffffff 50%,
+    #d86c6a 53%,
+    #590907 62%,
+    #590907 100%
+  );
+  background-size: 250% 160%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer-sweep 2.5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Typewriter Cursor Blink */
+@keyframes cursor-blink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 0.85s infinite;
 }
 
 /* Infinite Marquee */

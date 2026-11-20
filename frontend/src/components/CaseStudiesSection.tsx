@@ -149,20 +149,10 @@ export default function CaseStudiesSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 pb-8 border-b border-[#590907]/15">
-          <div>
-            <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#5A6054] mb-3 flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#590907] ring-4 ring-[#590907]/30" />
-              <span>Appendix F & G Specification</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#220709] tracking-[-0.03em]">
-              End-to-End Workflow & Guardrails
-            </h2>
-          </div>
-          <p className="max-w-md text-[#484c42] text-sm md:text-base leading-relaxed">
-            From calendar observance detection to idempotent social dispatch, every step is
-            logged into an immutable audit trail with zero unapproved releases.
-          </p>
+        <div className="mb-20 pb-8 border-b border-[#590907]/15">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#220709] tracking-[-0.03em]">
+            End-to-End Workflow & Guardrails
+          </h2>
         </div>
 
         {/* Layout: Left 68% Stages, Right 32% Floating Command Center */}
